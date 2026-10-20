@@ -1,48 +1,9 @@
-import { useState, useEffect } from 'react';
-import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
-
-const roles = [
-  'MERN Stack Developer',
-  'Gen AI & LLM Builder',
-  'Full-Stack Engineer',
-  'Competitive Programmer (300+ DSA)',
-];
+import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowRight } from 'react-icons/fi';
 
 const Hero = () => {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [displayText, setDisplayText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [charIndex, setCharIndex] = useState(0);
-
-  useEffect(() => {
-    const currentRole = roles[roleIndex];
-    let timeout;
-
-    if (!isDeleting && charIndex < currentRole.length) {
-      timeout = setTimeout(() => {
-        setDisplayText(currentRole.substring(0, charIndex + 1));
-        setCharIndex(charIndex + 1);
-      }, 75);
-    } else if (!isDeleting && charIndex === currentRole.length) {
-      timeout = setTimeout(() => setIsDeleting(true), 2200);
-    } else if (isDeleting && charIndex > 0) {
-      timeout = setTimeout(() => {
-        setDisplayText(currentRole.substring(0, charIndex - 1));
-        setCharIndex(charIndex - 1);
-      }, 35);
-    } else if (isDeleting && charIndex === 0) {
-      setIsDeleting(false);
-      setRoleIndex((prev) => (prev + 1) % roles.length);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, roleIndex]);
-
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  const nameLetters = 'Tushar Mishra'.split('');
 
   return (
     <section className="hero" id="hero">
@@ -65,44 +26,50 @@ const Hero = () => {
       </div>
 
       <div className="hero-content">
+        {/* Availability Badge */}
         <div className="hero-badge">
           <span className="badge-dot" />
-          <span>Available for opportunities</span>
+          <span>Open to Software Developer Internships</span>
         </div>
 
+        {/* Main Heading */}
         <h1 className="hero-name">
-          {nameLetters.map((letter, i) => (
-            <span
-              key={i}
-              className="hero-letter"
-              style={{ animationDelay: `${i * 0.05}s` }}
-            >
-              {letter === ' ' ? '\u00A0' : letter}
-            </span>
-          ))}
+          Hi, I'm <span className="hero-name-gradient">Tushar Mishra.</span>
         </h1>
 
-        <div className="hero-tagline">
-          <span className="hero-tagline-prefix">&gt; </span>
-          <span>{displayText}</span>
-          <span className="typing-cursor" />
-        </div>
+        {/* Professional Title */}
+        <h2 className="hero-title">
+          Full-Stack Developer &amp; GenAI Builder
+        </h2>
 
+        {/* Description */}
         <p className="hero-description">
-          Computer Science student at <span className="text-cyan">VIT Bhopal</span> crafting intelligent,
-          scalable web applications powered by modern <span className="text-purple">MERN Stack</span> &amp; <span className="text-cyan">Generative AI</span>.
+          I build full-stack web applications and AI-powered products using the MERN stack, large language models, and retrieval-augmented generation.
         </p>
 
+        {/* CTA Actions */}
         <div className="hero-cta">
-          <button className="btn btn-primary magnetic-btn" onClick={() => scrollTo('projects')}>
+          <button 
+            type="button"
+            className="btn btn-primary magnetic-btn" 
+            onClick={() => scrollTo('projects')}
+          >
             <span>View Projects</span>
+            <FiArrowRight className="btn-icon" />
             <span className="btn-shine" />
           </button>
-          <button className="btn btn-outline magnetic-btn" onClick={() => scrollTo('contact')}>
-            <span>Contact Me</span>
-          </button>
+          
+          <a 
+            href="/Tushar_Mishra_Resume.pdf" 
+            download="Tushar_Mishra_Resume.pdf"
+            className="btn btn-outline magnetic-btn hero-resume-btn"
+          >
+            <FiDownload className="btn-icon" />
+            <span>Download Resume</span>
+          </a>
         </div>
 
+        {/* Social Links */}
         <div className="social-links" style={{ marginTop: '2.5rem' }}>
           <a 
             href="https://github.com/Tushar859" 
@@ -131,6 +98,7 @@ const Hero = () => {
           </a>
         </div>
 
+        {/* Scroll Indicator */}
         <div className="scroll-indicator" onClick={() => scrollTo('about')}>
           <div className="scroll-mouse">
             <div className="scroll-wheel" />

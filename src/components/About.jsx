@@ -42,8 +42,8 @@ const About = () => {
             </div>
             <div className="terminal-output">
               <p>
-                I'm a passionate <span className="text-cyan">Computer Science</span> student at
-                VIT Bhopal with a strong focus on{' '}
+                I'm a passionate <span className="text-cyan">Computer Science (AI &amp; ML)</span> student at{' '}
+                <span className="text-cyan">Vellore Institute Of Technology</span> with a strong focus on{' '}
                 <span className="text-purple">full-stack development</span> and{' '}
                 <span className="text-pink">Generative AI</span>.
               </p>

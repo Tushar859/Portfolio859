@@ -1,24 +1,21 @@
 const educationData = [
   {
     year: '2023 – 2027 (Expected)',
-    institution: 'VIT Bhopal University',
-    degree: 'B.Tech in Computer Science & Engineering',
+    institution: 'Vellore Institute Of Technology',
+    degree: 'B.Tech in Computer Science & Engineering (AIML)',
     score: 'CGPA: 8.56',
-    location: 'Bhopal, Madhya Pradesh',
   },
   {
     year: '2020 – 2021',
     institution: 'Divine Public School',
     degree: 'Class XII – CBSE',
     score: 'Percentage: 93.6%',
-    location: 'Maharajganj, UP',
   },
   {
     year: '2018 – 2019',
     institution: "St. Joseph's School",
     degree: 'Class X – CBSE',
     score: 'Percentage: 85.6%',
-    location: 'Maharajganj, UP',
   },
 ];
 
@@ -38,7 +35,7 @@ const Education = () => {
                 <h3 className="timeline-title">{item.institution}</h3>
                 <p className="timeline-subtitle">{item.degree}</p>
                 <p className="timeline-description">
-                  {item.score} • {item.location}
+                  {item.score}
                 </p>
               </div>
             </div>
